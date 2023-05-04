@@ -11,3 +11,5 @@ https://hpcquantlib.wordpress.com/2015/09/20/calibration-of-heston-stochastic-lo
 https://github.com/amuguruza/NN-StochVol-Calibrations
 
 https://github.com/comeh
+
+https://github.com/alessandrobalata
