@@ -15,3 +15,6 @@ https://github.com/comeh
 https://github.com/alessandrobalata
 
 ## Articles:
+
+https://www.dropbox.com/scl/fi/b9wxha9ek45s5gofmyqyv/FN6905_Notes.pdf?rlkey=0x7iakmrup25kcw5n4ybfis2y&dl=0
+
