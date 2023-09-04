@@ -1,0 +1,453 @@
+\documentclass[a4paper,12pt, openright]{report}
+
+% Packages francais
+%\usepackage[french]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{bbm}
+\usepackage{stmaryrd}
+\usepackage[displaymath, mathlines]{lineno}
+\usepackage{minitoc}
+%\usepackage{bbold}
+%\usepackage{amssymb}
+\usepackage{amsmath, amsfonts, dsfont, amsthm}
+\usepackage{mathtools}
+\usepackage{stackrel}
+\usepackage[ruled,vlined]{algorithm2e}
+\usepackage[outline]{contour}
+
+%\setlength\arrayrulewidth{1.1pt}
+
+
+% Document starts here
+% 
+\newcounter{daggerfootnote}
+\newcommand*{\daggerfootnote}[1]{%
+    \setcounter{daggerfootnote}{\value{footnote}}%
+    \renewcommand*{\thefootnote}{\fnsymbol{footnote}}%
+    \footnote[2]{#1}%
+    \setcounter{footnote}{\value{daggerfootnote}}%
+    \renewcommand*{\thefootnote}{\arabic{footnote}}%
+    }
+    
+\usepackage[ruled,vlined, french]{algorithm2e}
+\usepackage{titlesec}
+\usepackage[top=1cm, bottom=1cm, margin=1.8cm]{geometry}
+\newenvironment{allintypewriter}{\ttfamily}{\par}
+\usepackage{stmaryrd}
+\usepackage{caption}
+\usepackage{xcolor}
+\usepackage{graphicx}
+% Personnalisation des marges et haut/bas de pages
+\usepackage{fancyhdr}
+%\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+% Packages dessins
+\usepackage{pict2e}
+\usepackage{tikz}
+\usepackage{graphicx}
+
+% Packages Ams
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage[Sonny]{fncychap}
+\ChNameVar{\Large\sc} \ChNumVar{\Huge} \ChTitleVar{\Huge\bf} \ChRuleWidth{1pt} \ChNameUpperCase
+\makeatletter
+\def\vhrulefill#1{\leavevmode\leaders\hrule\@height#1\hfill \kern\z@}
+\makeatother
+\setlength\arrayrulewidth{1.1pt}
+
+% Package pour les hyperliens
+\definecolor{bv}{rgb}{0.54, 0.17, 0.89}
+\definecolor{bz}{rgb}{0.74, 0.2, 0.64}
+\definecolor{indigo}{rgb}{0.29, 0.0, 0.51}
+\definecolor{persIn}{rgb}{0.2, 0.07, 0.48}
+\definecolor{purple}{rgb}{0.5, 0.0, 0.5}
+\usepackage[colorlinks=true, urlcolor=blue, linkcolor =myred, citecolor=purple, ]{hyperref}
+\usepackage{amsfonts}
+% Package pour les intervalles d'entiers
+\usepackage{stmaryrd}
+
+%Package pour enumerate
+\usepackage{enumitem}
+
+% Numerotation des equations
+\numberwithin{equation}{section}
+
+% Styles de texte
+\newcommand \dis {\displaystyle}
+\newcommand \tex {\textstyle}
+\newcommand \scr {\scriptstyle}
+
+% Flèches convergences: suites, familles
+\newcommand \limo {\;\;\mathop{\longrightarrow}_{\e\to 0}\;\;}
+\newcommand \limod {\;\;\mathop{\longrightarrow}_{\de\to 0}\;\;}
+\newcommand \limh {\;\;\mathop{\longrightarrow}_{h\to 0}\;\;}
+\newcommand \limi {\;\;\mathop{\longrightarrow}_{n\to+\infty}\;\;}
+\newcommand \limk {\;\;\mathop{\longrightarrow}_{k\to+\infty}\;\;}
+\numberwithin{equation}{section}
+
+%% Colors ====================
+\definecolor{darkWhite}{rgb}{0.94,0.94,0.94}
+\definecolor{dg}{rgb}{0.0, 0.5, 0.0}
+\definecolor{dr}{rgb}{0.7, 0.11, 0.11}
+\definecolor{db}{rgb}{0.0, 0.0, 0.55}
+\definecolor{mb}{rgb}{0.0, 0.0, 0.8}
+\colorlet{myred}{red!60!black}
+\definecolor{sb}{rgb}{0.14, 0.16, 0.48}
+\definecolor{NB}{rgb}{0.0, 0.0, 0.5}
+\definecolor{midnightblue}{rgb}{0.1, 0.1, 0.44}
+\definecolor{specCol}{HTML}{B42C4E}
+\definecolor{myblue}{HTML}{28629D}
+\definecolor{pc}{HTML}{800040}
+\definecolor{byz}{rgb}{0.44, 0.16, 0.39}
+% ===========================
+
+% Norme triple
+\newcommand\tn{|\!|\!|} 
+\DeclareMathOperator*{\argmax}{arg\,max\,}
+\DeclareMathOperator*{\argmin}{arg\,min\,}
+% Lettres grecques
+\newcommand \al {\alpha}
+\newcommand \be {\beta}
+\newcommand \ga {\gamma}
+\newcommand \Ga {\Gamma}
+\newcommand \de {\delta}
+\newcommand \De {\Delta}
+\newcommand \vare {\varepsilon}
+\newcommand \om {\omega}
+\newcommand \Om {\Omega}
+\newcommand \la {\lambda}
+\newcommand \La {\Lambda}
+\newcommand \ph {\varphi}
+\renewcommand \th {\theta}
+\newcommand \ka {\kappa}
+\newcommand \si {\sigma}
+\newcommand \SSi {\Sigma}
+\newcommand \grad {\nabla}
+
+% Ensembles classiques en gras
+\newcommand*\dd{\mathop{}\!\mathrm{d}}
+\newcommand*\R{\mathop{}\!\mathbb{R}}
+\newcommand*\N{\mathop{}\!\mathbb{N}}
+
+\newcommand*\E{\mathop{}\!\mathbb{E}}
+\newcommand*\F{\mathop{}\!\mathbb{F}}
+\newcommand*\PP{\mathop{}\!\mathbb{P}}
+\newcommand*\U{\mathop{}\!\mathcal{U}}
+\newcommand*\OO{\mathop{}\!\mathcal{O}}
+\newcommand*\HH{\mathop{}\!\mathbb{H}}
+\newcommand{\1}{\mathbbm{1}}
+\newcommand{\indep}{\perp \!\!\! \perp}
+% Ensembles/familles avec ecritures rondes
+\renewcommand \AA {\mathcal{A}} % La commande \AA existe deja de base
+\newcommand \BB {\mathcal{B}}
+\newcommand \DD {\mathcal{D}}
+\newcommand \EE {\mathcal{E}}
+\newcommand \FF {\mathcal{F}}
+\newcommand \GG {\mathcal{G}}
+\newcommand \II {\mathcal{I}}
+\newcommand \JJ {\mathcal{J}}
+\newcommand \KK {\mathcal{K}}
+\newcommand \LL {\mathcal{L}}  % La commande \L existe deja de base
+\newcommand \GL {\mathcal{G}\mathcal{L}} % Groupe libre
+\newcommand \MM {\mathcal{M}}
+\newcommand \RR {\mathcal{R}}  
+\renewcommand \SS {\mathcal{S}} 
+\newcommand \TT {\mathcal{T}}
+\newcommand \UU {\mathcal{U}}
+\newcommand \VV {\mathcal{V}}
+
+% Quelques raccourcis utiles
+\newcommand \beq {\begin{equation}} % environnement equation
+\newcommand \eeq {\end{equation}}
+\newcommand \ba {\begin{array}} % environnement tableau
+\newcommand \ea {\end{array}}
+\newcommand \ecart {\noalign{\medskip}}% grand saut de ligne
+\newcommand{\diag}{\text{diag}} % matrice diagonale
+
+%\frenchbsetup{StandardItemLabels=true}
+
+\newenvironment{questions}{\begin{enumerate}[label={\bf\arabic*)}]}{\end{enumerate}}
+\newenvironment{subquestions}{\begin{enumerate}[label={\bf\alph*)}]}{\end{enumerate}}
+
+
+\AtBeginDocument{\def\labelitemi{$\rhd$}}
+
+% Définitions des environnements Théorème, Corollaire, Définition, etc.
+
+\newtheoremstyle{mystyle}%                % Name
+  {}%                                     % Space above
+  {}%                                     % Space below
+  {\normalfont}%                                     % Body font
+  {}%                                     % Indent amount
+  {\color{pc}\scshape}%                            % Theorem head font
+  {.}%                                    % Punctuation after theorem head
+  { }%                                    % Space after theorem head, ' ', or \newline
+  {\thmname{#1}\thmnumber{ #2}\thmnote{ (#3)}}%                                     % Theorem head spec (can be left empty, meaning `normal')
+
+\theoremstyle{mystyle}
+\newtheorem{theorem}{Theorem}[subsection]
+\newtheorem{theo}{Theorem}[section]
+\newtheorem{prop}{Proposition}[subsection]
+\newtheorem{definition}{Definition}[subsection]
+\newtheorem{lemme}{Lemma}[subsection]
+\newtheorem{defi}{Definition}[section]
+\newtheorem{propo}{Proposition}[section]
+\newtheorem{cor}{Corollary}[subsection]
+
+
+%\newtheorem{Pres}[Theoreme]{Preuves}
+%\newtheorem{proof}[Theoreme]{Preuve} 
+ 
+
+
+\usepackage{blindtext}
+\newcommand{\prooffont}{\scshape}
+
+
+\usepackage{xpatch}
+\tracingpatches
+\xpatchcmd{\proof}{\itshape}{\prooffont}{}{}
+
+% Raccourcis pour les references}
+\newcommand \refe[1]{(\ref{#1})}
+\newcommand \reff[1]{figure~\ref{#1}}
+\newcommand \refs[1]{Section~\ref{#1}}
+\newcommand \refss[1]{subsection~\ref{#1}}
+\newcommand \refD[1]{Définition~\ref{#1}}
+\newcommand \refT[1]{Théorème~\ref{#1}}
+\newcommand \refL[1]{Lemme~\ref{#1}}
+\newcommand \refC[1]{Corollaire~\ref{#1}}
+\newcommand \refP[1]{Proposition~\ref{#1}}
+\newcommand \refPt[1]{Propriétés~\ref{#1}}
+\newcommand \refR[1]{Remarque~\ref{#1}}
+\newcommand \refE[1]{Exemple~\ref{#1}}
+\newcommand \refN[1]{Notation~\ref{#1}}
+
+
+% Raccourcis pour ecrire u et f en gras
+\newcommand{ \uu} {\boldsymbol{u}}
+\newcommand{ \ff} {\boldsymbol{f}}
+\newcommand{\VaR} {\text{VaR}}
+\newcommand{\CVaR} {\text{CVaR}}
+
+% Raccourcis vectoriel
+\newcommand \Vect[1]{\text{Vect}(#1)}
+\newcommand \Ker[1]{\text{Ker}(#1)}
+\newcommand \im[1]{\text{Im}(#1)}
+\newcommand\fIf[2]{\left\llbracket #1;#2\right\rrbracket}
+
+% Le dx droit dans l'intégrale
+\newcommand \dx {\mathrm{d}x}
+
+% L'exponentiel 'droit'
+\DeclareMathOperator{\e}{e}
+\DeclareMathOperator{\supess}{supess}
+
+% Titre, auteur et date sont utilises plus bas dans le titlepage
+\title{\textsc{Path-Dependent Local Volatility models : theoretical study and backtests} }
+\author{ \textsc{Oussama BOUDCHICHI}}
+\date{2022-2023}
+%\newcommand{\chaptertoc}[1]{\chapter*{#1}% creation d'une commande chaptertoc pour ne pas numeroter le chapitre intro
+
+% Style de pages: definit les hauts et bas (ici vide) de pages
+\pagestyle{empty}
+\pagestyle{fancyplain}
+%\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\footrulewidth}{0pt}
+\fancyhf{}
+%\fancyhead[LE,RO]{\thepage}  %LE=Left Even, RO=Right Odd
+\fancyhead[LO]{{\footnotesize\textsc{\rightmark}}}
+\fancyhead[RE]{{\footnotesize\textsc{\leftmark}}}
+\cfoot{\thepage}
+%\addtolength{\headheight}{25pt}
+\renewcommand\qedsymbol{$\textcolor{myred}{\square}$}
+\usepackage[toc,page]{appendix}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Document starts here 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\renewcommand{\thesection}{\arabic{section}}
+\usepackage{titlesec}
+\titleformat*{\section}{\Large\scshape}
+\titleformat*{\subsection}{\scshape\color{db}}
+\titleformat*{\subsubsection}{\scshape\color{specCol}}
+
+\makeatletter
+\newcommand\xparagraph{\@startsection{paragraph}{4}{\z@}%
+                                    {3.25ex \@plus1ex \@minus.2ex}%
+                                    {-1em}%
+                                    {\scshape}}
+\makeatother
+\newtagform{red}{\color{myred}(}{)}
+
+
+
+\begin{document}
+%\maketitle
+\usetagform{red}
+
+\makeatletter
+
+  \begin{titlepage}
+\newgeometry{left=0.25cm,right=0.25cm,top=0.25cm, bottom=0cm}
+    %\vspace{-5cm}
+      %
+	\centering
+	\includegraphics[width=0.4\textwidth]{UniversiteParisCite_logo_horizontal_couleur_CMJN}
+  \hfill
+  
+	\par\vspace{3cm}
+	{\scshape\Large Master's Thesis \par}
+	
+	\vspace{2cm}
+            %\hrule height 2pt 
+            \hspace{0.02\paperwidth}\textcolor{pc}{\vhrulefill{2pt}}\hspace{0.02\paperwidth}
+
+            \vspace*{0.6cm}
+		{\huge \@title \par}
+            \vspace*{0.6cm} \hspace{0.02\paperwidth}\textcolor{pc}{\vhrulefill{2pt}}\hspace{0.02\paperwidth}
+	\vspace{1cm}
+        
+	{\LARGE \@author \par}
+ 
+	\vspace{2cm}
+	{\large Supervised by \par
+        \textsc{Alexey KOZHEMYAK}\par
+	\textsc{Jean-François CHASSAGNEUX}\par}
+	\vspace{2cm}
+	{\large \@date\par}
+	\vspace{2cm}
+	{\scshape\Large Université Paris Cité \par}
+	\vfill
+\end{titlepage}  
+\makeatother
+\restoregeometry
+
+\pagestyle{fancy}
+\fancyhf{}
+\cfoot{\thepage}
+
+${}^{}$
+
+
+\renewcommand{\abstractname}{Abstract}
+
+\begin{abstract}
+    \pagestyle{fancy}
+\fancyhf{}
+\cfoot{\thepage}
+
+   
+\end{abstract}
+ %Table des matières
+\newpage
+\pagestyle{fancy}
+\fancyhf{}
+\cfoot{\thepage}
+\setcounter{tocdepth}{1}
+\begingroup
+\hypersetup{linkcolor=midnightblue}
+\tableofcontents
+\endgroup
+
+\begingroup
+\hypersetup{linkcolor=midnightblue}
+\listoffigures
+\endgroup
+
+\iffalse
+\chapter*{List of notations}
+\pagestyle{fancy}
+\fancyhf{}
+\cfoot{\thepage}
+
+%\addstarredchapter{Liste des notations} 
+
+\begin{enumerate}
+\item[•] For $(x, y) \in \R^2$, $x\wedge y := \min\left(x, y\right)$ and $x\vee y := \max\left(x, y\right)$\\
+
+\iffalse
+\item[•] $\mathbb{H}^p\left(\mathbb{F}\right)$ : L'ensemble des processus $\nu$, $\mathbb{F}$-progressifs tel que : $\mathbb{E}\left(\displaystyle \int_{0}^{T}\left| \nu_t\right|^p \dd t \right) < \infty$ pour $p>0$.\\
+\fi
+\item[•] $| \sigma | := \left( \mathrm{Tr}\left(\sigma \sigma^T\right)\right)^{\frac{1}{2}}$ is the Frobenius norm of a square matrix $\sigma$.\\
+
+\item[•] $\langle x, y \rangle := \displaystyle \sum_{j = 1}^{d}x_jy_j$ for $x, y \in \R^d$. We denote $|.|$ its associated norm.\\
+
+\item[•] The interior, the closure and the boundary of a set  $\mathcal{O}$ are denoted  respectively $\overset{o}{\mathcal{O}}$, $\overline{\OO}$ and $\displaystyle \partial\OO$.\\
+
+
+\item[•] $\mathcal{S}_d$ is the set of square real valued symmetric matrices of order $d$.\\
+
+\item[•] $\nabla_x \psi(t, x) = \left(\partial_{x_j}\psi(t,x)\right)_{j\in \llbracket 1,d\rrbracket}$ and $H_x \psi(t, x) = \left(\partial_{x_ix_j}^2 \psi(t, x) \right)_{(i, j) \in \llbracket 1,d\rrbracket^2}$ for $(t, x) \in \R_+ \times \R^d$ are respectively the gradient and the hessian matrix w.r.t the space variable of a function $\psi \in \mathcal{C}^{1,2}\left(\R_+^* \times \R^d\right)$. \\
+
+\item[•] $\left\{f = 0\right\} := \left\{ x\in \R^d: \quad f(x) = 0_{\R^n}\right\}$ such that $f: \R^d \to \R^n$. 
+\end{enumerate}
+\newpage
+\fi
+
+\chapter*{Introduction}
+\addstarredchapter{Introduction}
+\pagestyle{fancy}
+\fancyhf{}
+\cfoot{\thepage}
+
+
+\newpage
+
+\iffalse
+\pagestyle{fancy}
+\fancyhf{}
+\cfoot{\thepage}
+
+\vspace*{0.3\textheight}
+\begin{center}
+    \includegraphics[scale = 3]{Map.pdf}
+\end{center}
+\fi
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Path-Dependent Volatility modelling in a nutshell}
+\pagestyle{fancyplain}
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\footrulewidth}{1pt}
+\fancyhf{}
+%\fancyhead[LE,RO]{\thepage}  %LE=Left Even, RO=Right Odd
+
+\fancyhead[L]{\fontsize{9}{12} \selectfont \rightmark}
+%\fancyhead[R]{\thepage}
+\cfoot{\thepage}
+\renewcommand{\subsectionmark}[1]{%
+  \markright{\MakeUppercase{\thesubsection.\ #1}}}%
+
+%\fancyhead[LO]{{\footnotesize\textsl{\rightmark}}}
+%\fancyhead[RE]{{\footnotesize\textsl{\leftmark}}}
+%\cfoot{\thepage}
+
+
+
+
+
+
+
+\appendix
+\chapter{Proof}\label{appendix:sa}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Bibliography %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\bibliographystyle{apalike}
+\addstarredchapter{Bibliography} 
+\bibliography{refs}   
+\pagestyle{fancy}
+\fancyhf{}
+\cfoot{\thepage}
+\end{document}
+
