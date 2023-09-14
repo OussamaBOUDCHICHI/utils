@@ -18,3 +18,5 @@ https://github.com/alessandrobalata
 
 https://www.dropbox.com/scl/fi/b9wxha9ek45s5gofmyqyv/FN6905_Notes.pdf?rlkey=0x7iakmrup25kcw5n4ybfis2y&dl=0
 
+
+\thanks{\textcolor{midnightblue}{\texttt{\href{mailto:oussama.boudchichi@etu.u-paris.fr}{\underline{oussama.boudchichi@etu.u-paris.fr}} }}}}
